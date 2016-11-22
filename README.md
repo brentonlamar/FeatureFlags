@@ -9,12 +9,21 @@ are able to write code and push that code into production and have it live with 
 you can quickly and easily test for feedback during development.  You can also implement these new features 
 into a sales pitch when the features are actively being worked on.  The possibilities are endless.
 
-## Toggles
+# Builds
+Release branch (`master`)
+
+[![Build Status](https://travis-ci.org/brentonlamar/FeatureFlags.svg?branch=master)](https://travis-ci.org/brentonlamar/FeatureFlags) 
+
+Development branch (`develop`)
+
+[![Build Status](https://travis-ci.org/brentonlamar/FeatureFlags.svg?branch=develop)](https://travis-ci.org/brentonlamar/FeatureFlags)
+
+# Toggles
 Toggles are bits of code that actually perform the actions of deciding "Is this feature available?"  There
 are a few default toggles created as a starting point in this library, but it's really simple to create your own
 as well.
 
-### BoolFeatureToggle
+## BoolFeatureToggle
 Sometimes you simply want to turn a feature on in a development environment, but you don't want that feature to 
 go live in production just yet.  That is the idea behind the `BoolFeatureToggle`.
 
@@ -43,7 +52,7 @@ if (emailReceiptFeature.Enabled)
 }
 ```
 
-### DateRangeFeatureToggle
+## DateRangeFeatureToggle
 Maybe you want to turn on a feature during a specific time frame.  That's the idea behind the `DateRangeFeatureToggle`.
 
 All the steps are the same as the `BoolFeatureToggle`.
@@ -70,7 +79,7 @@ if (blackFridaySaleFeature.Enabled)
 }
 ```
 
-### IdListFeatureToggle
+## IdListFeatureToggle
 Sometimes, you have an id of a user, merchant, role, etc. and you want to enable specific features for those users.
 Enter the `IdListFeatureToggle`.
 
@@ -102,11 +111,11 @@ if (professionalFeature.Enabled)
 }
 ```
 
-## Providers
+# Providers
 Providers are a simple but effective way to swap out the implementation of _how_ you define where the
 feature settings are stored.  There is only one interface that you must inherit, `IFeatureProvider`,
 and that will take a `string key` and send out the value of that key.
 
-### AppSettingsProvider 
+## AppSettingsProvider 
 This is the default provider that gets the feature configuration from the AppSettings / Web.config file.
 All default instances of Toggles use this provider.
