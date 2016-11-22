@@ -9,7 +9,7 @@ script:
   - chmod +x ./Scripts/IncrementVersion.sh
   - ./Scripts/IncrementVersion.sh
   - xbuild /p:Configuration=Release FeatureFlags.sln /p:TargetFrameworkVersion="v4.6" 
-  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./FeatureFlags/FeatureFlags.Tests/bin/Release/FeatureFlags.Tests.dll
+  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./FeatureFlags.Tests/bin/Release/FeatureFlags.Tests.dll
 
 after_success:
   - chmod +x ./Scripts/DeployingNuget.sh
