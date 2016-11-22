@@ -1,0 +1,17 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>FeatureFlags</id>
+    <version></version> <!-- Leave blank, automatically fetched from assemble file -->
+    <authors>Betabyte Software | Brenton Lamar</authors>
+    <owners>Betabte Software</owners>
+    <projectUrl>https://github.com/brentonlamar/FeatureFlags</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A simple library used for feature flags (and abstractions to expand if necessary).</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2016</copyright>
+  </metadata>
+  <files>
+    <file src="bin/Release/FeatureFlags.dll" target="lib" />
+  </files>
+</package>
