@@ -9,13 +9,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureFlags.Tests", "Featu
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{2C0A576B-BA2F-433C-BD29-E3548D0CDBC5}"
 	ProjectSection(SolutionItems) = preProject
-		.travis.yml = .travis.yml
+		..\.travis.yml = ..\.travis.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{A7DDB09E-FE64-4B6A-A458-4844C0CF78B8}"
 	ProjectSection(SolutionItems) = preProject
-		Scripts\DeployingNuget.sh = Scripts\DeployingNuget.sh
-		Scripts\IncrementVersion.sh = Scripts\IncrementVersion.sh
+		..\Scripts\DeployingNuget.sh = ..\Scripts\DeployingNuget.sh
+		..\Scripts\IncrementVersion.sh = ..\Scripts\IncrementVersion.sh
 	EndProjectSection
 EndProject
 Global
