@@ -46,6 +46,7 @@
     <Compile Include="IFeatureToggle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\AppSettingsProvider.cs" />
+    <Compile Include="Providers\SqlSettingsProvider.cs" />
     <Compile Include="Seperator.cs" />
     <Compile Include="Toggles\BoolFeatureToggle.cs" />
     <Compile Include="Toggles\DateRangeFeatureToggle.cs" />
