@@ -9,23 +9,23 @@ using System.Threading.Tasks;
 
 namespace FeatureFlags.Providers
 {
-    public class SqlSettingsProvider : IFeatureProvider
+    public class MssqlSettingsProvider : IFeatureProvider
     {
         private string _connectionStringName;
-        private Dictionary<string, string> _parameterValues;
+        public Dictionary<string, string> ParameterValues;
 
-        public SqlSettingsProvider(string connectionStringName, Dictionary<string, string> parameterKVPs)
+        public MssqlSettingsProvider(string connectionStringName, Dictionary<string, string> parameterKVPs)
         {
             this._connectionStringName = connectionStringName;
-            this._parameterValues = parameterKVPs;
+            this.ParameterValues = parameterKVPs;
         }
 
-        public SqlSettingsProvider(string connectionStringName) : this(connectionStringName, new Dictionary<string, string>()) { }
+        public MssqlSettingsProvider(string connectionStringName) : this(connectionStringName, new Dictionary<string, string>()) { }
 
-        public SqlSettingsProvider() : this("default", new Dictionary<string, string>()) { }
+        public MssqlSettingsProvider() : this("default", new Dictionary<string, string>()) { }
 
         /// <summary>
-        /// Get the value from a SQL command, something very generic and not instance-specific.
+        /// Get the value from a SQL command
         /// </summary>
         /// <example>
         ///     select dbo.IsFeatureOn from features where featureId = 1001
@@ -34,6 +34,7 @@ namespace FeatureFlags.Providers
         /// <returns>string</returns>
         public string GetValue(string key)
         {
+            string result = null;
             var sqlQuery = ConfigurationManager.AppSettings[key];
 
             using (var connection = new SqlConnection(ConfigurationManager.ConnectionStrings[_connectionStringName].ConnectionString))
@@ -43,20 +44,25 @@ namespace FeatureFlags.Providers
                 {
                     cmd.CommandType = CommandType.Text;
 
-                    foreach (var parameter in _parameterValues)
+                    foreach (var parameter in ParameterValues)
                     {
                         cmd.Parameters.Add(new SqlParameter() { ParameterName = parameter.Key, SqlValue = parameter.Value });
                     }
 
-                    var reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                    if (reader.HasRows && reader.FieldCount.Equals(1))
+                    using (var reader = cmd.ExecuteReader())
                     {
-                        return reader[0].ToString();
+                        if (reader.HasRows && reader.FieldCount.Equals(1))
+                        {
+                            while (reader.Read())
+                            {
+                                result = reader[0].ToString();
+                            }
+                        }
                     }
                 }
             }
 
-            return null;
+            return result;
         }
     }
 }
