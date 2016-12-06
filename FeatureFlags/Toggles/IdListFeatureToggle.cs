@@ -7,7 +7,7 @@ using FeatureFlags.Providers;
 
 namespace FeatureFlags.Toggles
 {
-    public class IdListFeatureToggle : FeatureToggle, IFeatureToggle
+    public abstract class IdListFeatureToggle : FeatureToggle, IFeatureToggle
     {
         private int _id;
         public char Seperator { get; set; }
