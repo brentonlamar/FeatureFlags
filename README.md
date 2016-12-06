@@ -1,4 +1,7 @@
 # FeatureFlags
+
+![alt text](FeatureFlags.png "Why use feature flags?  This is self-explanatory.")
+
 Sometimes it makes sense for developers to push code into a pipeline (`master` as an example) without needing
 to follow a normal merge cycle.  Sometimes, you want to push features out to a specific subset of customers.
 Or sometimes you want to work in parallel with other features without having to worry about what breaking
@@ -119,3 +122,17 @@ and that will take a `string key` and send out the value of that key.
 ## AppSettingsProvider 
 This is the default provider that gets the feature configuration from the AppSettings / Web.config file.
 All default instances of Toggles use this provider.
+
+## MssqlSettingsProvider
+This is a handy provider that will run a specific query and return the *single* resultset.  You _must_ craft 
+your query in a way that there will only be a single resultset, similar to how the AppSettingsProvider would
+read a single "value".
+
+To use this provider, simply pass it into the toggle you'd like to overload.  Then, you must specify a query in
+your configuration file.  
+
+You may also provide query parameters to the provider by adding to the `ParameterValues` dictionary.  Your query
+parameters must conform to the standard (ie, start with an `@` symbol and be found within the query), and the values
+will be attempted to be run as strings.
+
+# Advanced Usage
