@@ -1,4 +1,7 @@
 # FeatureFlags
+
+![alt text](FeatureFlags.png "Why use feature flags?  This is self-explanatory.")
+
 Sometimes it makes sense for developers to push code into a pipeline (`master` as an example) without needing
 to follow a normal merge cycle.  Sometimes, you want to push features out to a specific subset of customers.
 Or sometimes you want to work in parallel with other features without having to worry about what breaking
