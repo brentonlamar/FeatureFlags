@@ -3,13 +3,19 @@ using FeatureFlags.Providers;
 
 namespace FeatureFlags.Toggles
 {
-    public abstract class DateAfterFeatureToggle : FeatureToggle, IFeatureToggle
+    public abstract class AfterDateFeatureToggle : FeatureToggle, IFeatureToggle
     {
-        protected DateAfterFeatureToggle() : this(new AppSettingsProvider()) { }
-        protected DateAfterFeatureToggle(IFeatureProvider provider)
+        protected AfterDateFeatureToggle() : this(new AppSettingsProvider()) { }
+        protected AfterDateFeatureToggle(IFeatureProvider provider)
         {
             _provider = provider;
         }
+
+        /// <summary>
+        /// Compares the current date with the toggle.  Returns true if 
+        /// the current datetime is after the specified date.  Useful to
+        /// say a feature is valid after a date.
+        /// </summary>
         public bool Enabled
         {
             get
@@ -24,7 +30,7 @@ namespace FeatureFlags.Toggles
                     throw new ArgumentException($"Invalid date: {value}");
                 }
 
-                return parsedDate > now;
+                return now > parsedDate;
             }
         }
     }

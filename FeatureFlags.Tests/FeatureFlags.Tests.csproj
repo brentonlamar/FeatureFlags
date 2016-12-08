@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BoolFeatuerToggleTests.cs" />
+    <Compile Include="DateBeforeFeatureToggleTests.cs" />
     <Compile Include="DateAfterFeatureToggleTests.cs" />
     <Compile Include="DateRangeFeatureToggleTests.cs" />
     <Compile Include="IdListFeatureToggleTests.cs" />
@@ -60,6 +61,9 @@
       <Project>{c2e4a1dc-a1af-4371-9fe6-a1b5325acfdc}</Project>
       <Name>FeatureFlags</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

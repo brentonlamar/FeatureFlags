@@ -82,6 +82,60 @@ if (blackFridaySaleFeature.Enabled)
 }
 ```
 
+## BeforeDateFeatureToggle
+Maybe you want to have a feature enabled _before_ a certain date/time.  That's the idea behind the `BeforeDateFeatureToggle`.
+
+All the steps are the same as the `BoolFeatureToggle`.
+
+```c#
+public class BlackFridaySaleFeature : BeforeDateFeatureToggle { }
+```
+
+Now, register the date in your config file.
+
+```
+<appSettings>
+    <add key="FeatureFlags.BlackFridaySaleFeature" value="2023-11-25 12:00:00 AM"/>
+</appSettings>
+```
+
+Again, use the class.
+
+```c#
+var blackFridaySaleFeature = new BlackFridaySaleFeature();
+if (blackFridaySaleFeature.Enabled)
+{
+    // Enable the "purchase" actions.
+}
+```
+
+## AfterDateFeatureToggle
+Sometimes, you want to have a feature enabled *after* a certain date/time.  Thus, use the `AfterDateFeatureToggle`.
+
+All the steps are the same as the `BoolFeatureToggle`.
+
+```c#
+public class BlackFridaySaleFeature : AfterDateFeatureToggle { }
+```
+
+Now, register the date in your config file.
+
+```
+<appSettings>
+    <add key="FeatureFlags.BlackFridaySaleFeature" value="2016-11-25 12:00:00 AM"/>
+</appSettings>
+```
+
+Again, use the class.
+
+```c#
+var blackFridaySaleFeature = new BlackFridaySaleFeature();
+if (blackFridaySaleFeature.Enabled)
+{
+    // Enable the "purchase" actions.
+}
+```
+
 ## IdListFeatureToggle
 Sometimes, you have an id of a user, merchant, role, etc. and you want to enable specific features for those users.
 Enter the `IdListFeatureToggle`.
