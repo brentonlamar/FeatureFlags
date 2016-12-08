@@ -49,6 +49,7 @@
     <Compile Include="Providers\MssqlSettingsProvider.cs" />
     <Compile Include="Seperator.cs" />
     <Compile Include="Toggles\BoolFeatureToggle.cs" />
+    <Compile Include="Toggles\DateAfterFeatureToggle.cs" />
     <Compile Include="Toggles\DateRangeFeatureToggle.cs" />
     <Compile Include="Toggles\IdListFeatureToggle.cs" />
   </ItemGroup>
