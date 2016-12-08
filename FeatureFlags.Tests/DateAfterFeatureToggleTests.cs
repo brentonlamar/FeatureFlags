@@ -11,7 +11,7 @@ namespace FeatureFlags.Tests
         public void DateRange_InvalidDate_ReturnsException()
         {
             // Arrange
-            var toggle = new DateRangeToggle_InvalidDate(new DatesProvider());
+            var toggle = new AfterDateRangeToggleInvalidAfterDate(new DatesProvider());
             // ACT
 
             // Assert
@@ -24,16 +24,16 @@ namespace FeatureFlags.Tests
 
 
         [Test]
-        public void TimeNow_AfterDate()
+        public void ToggleTimeIsAfterNow_ReturnsFase()
         {
-            var toggle = new DateRangeToggle_AfterNow(new DatesProvider());
-            Assert.That(toggle.Enabled, Is.True);
+            var toggle = new AfterDateRangeToggleNow(new DatesProvider());
+            Assert.That(toggle.Enabled, Is.False);
         }
 
         [Test]
-        public void TimeNow_BeforeDate()
+        public void ToggleTimeIsBeforeNow_ReturnsTrue()
         {
-            var toggle = new DateRangeToggle_AfterNow(new DatesProvider());
+            var toggle = new AfterDateRangeToggleBeforeNow(new DatesProvider());
             Assert.That(toggle.Enabled, Is.True);
         }
 
@@ -42,10 +42,10 @@ namespace FeatureFlags.Tests
         {
             public DatesProvider()
             {
-                var invalidNumberOfDates = new DateRangeToggle_InvalidDate();
+                var invalidNumberOfDates = new AfterDateRangeToggleInvalidAfterDate();
 
-                var afterNowToggle = new DateRangeToggle_AfterNow();
-                var beforeNowToggle = new DateRangeToggle_BeforeNow();
+                var afterNowToggle = new AfterDateRangeToggleNow();
+                var beforeNowToggle = new AfterDateRangeToggleBeforeNow();
 
 
                 var beforeNow = DateTime.Now.AddMinutes(-10).ToLongTimeString();
@@ -69,22 +69,22 @@ namespace FeatureFlags.Tests
             }
         }
 
-        class DateRangeToggle_InvalidDate : DateAfterFeatureToggle
+        class AfterDateRangeToggleInvalidAfterDate : AfterDateFeatureToggle
         {
-            public DateRangeToggle_InvalidDate() : base() { }
-            public DateRangeToggle_InvalidDate(IFeatureProvider provider) : base(provider) { }
+            public AfterDateRangeToggleInvalidAfterDate() : base() { }
+            public AfterDateRangeToggleInvalidAfterDate(IFeatureProvider provider) : base(provider) { }
         }
 
 
-        class DateRangeToggle_AfterNow : DateAfterFeatureToggle
+        class AfterDateRangeToggleNow : AfterDateFeatureToggle
         {
-            public DateRangeToggle_AfterNow() : base() { }
-            public DateRangeToggle_AfterNow(IFeatureProvider provider) : base(provider) { }
+            public AfterDateRangeToggleNow() : base() { }
+            public AfterDateRangeToggleNow(IFeatureProvider provider) : base(provider) { }
         }
-        class DateRangeToggle_BeforeNow : DateAfterFeatureToggle
+        class AfterDateRangeToggleBeforeNow : AfterDateFeatureToggle
         {
-            public DateRangeToggle_BeforeNow() : base() { }
-            public DateRangeToggle_BeforeNow(IFeatureProvider provider) : base(provider) { }
+            public AfterDateRangeToggleBeforeNow() : base() { }
+            public AfterDateRangeToggleBeforeNow(IFeatureProvider provider) : base(provider) { }
         }
     }
 }

@@ -15,7 +15,7 @@ namespace FeatureFlags.Tests
         public void DateRange_InvalidDate_ReturnsException()
         {
             // Arrange 
-            var toggle = new DateRangeToggle_InvalidDate(new DatesProvider());
+            var toggle = new BeforeDateRangeToggleInvalidBeforeDate(new DatesProvider());
             // ACT 
 
             // Assert 
@@ -29,14 +29,14 @@ namespace FeatureFlags.Tests
         [Test]
         public void ToggleTimeIsAfterNow()
         {
-            var toggle = new DateRangeToggle_ToggleTimeIsAfterNow(new DatesProvider());
+            var toggle = new BeforeDateRangeToggleToggleTimeIsAfterNow(new DatesProvider());
             Assert.That(toggle.Enabled, Is.True);
         }
 
         [Test]
         public void ToggleTimeIsBeforeNow()
         {
-            var toggle = new DateRangeToggle_ToggleTimeIsBeforeNow(new DatesProvider());
+            var toggle = new BeforeDateRangeToggleToggleTimeIsNow(new DatesProvider());
             Assert.That(toggle.Enabled, Is.False);
         }
 
@@ -45,10 +45,10 @@ namespace FeatureFlags.Tests
         {
             public DatesProvider()
             {
-                var invalidNumberOfDates = new DateRangeToggle_InvalidDate();
+                var invalidNumberOfDates = new BeforeDateRangeToggleInvalidBeforeDate();
 
-                var afterNowToggle = new DateRangeToggle_ToggleTimeIsAfterNow();
-                var beforeNowToggle = new DateRangeToggle_ToggleTimeIsBeforeNow();
+                var afterNowToggle = new BeforeDateRangeToggleToggleTimeIsAfterNow();
+                var beforeNowToggle = new BeforeDateRangeToggleToggleTimeIsNow();
 
 
                 var keyThatIsBeforeNow = DateTime.Now.AddMinutes(-10).ToLongTimeString();
@@ -72,36 +72,36 @@ namespace FeatureFlags.Tests
             }
         }
 
-        class DateRangeToggle_InvalidDate : DateBeforeFeatureToggle
+        class BeforeDateRangeToggleInvalidBeforeDate : BeforeDateFeatureToggle
         {
-            public DateRangeToggle_InvalidDate() : base()
+            public BeforeDateRangeToggleInvalidBeforeDate() : base()
             {
             }
 
-            public DateRangeToggle_InvalidDate(IFeatureProvider provider) : base(provider)
+            public BeforeDateRangeToggleInvalidBeforeDate(IFeatureProvider provider) : base(provider)
             {
             }
         }
 
 
-        class DateRangeToggle_ToggleTimeIsAfterNow : DateBeforeFeatureToggle
+        class BeforeDateRangeToggleToggleTimeIsAfterNow : BeforeDateFeatureToggle
         {
-            public DateRangeToggle_ToggleTimeIsAfterNow() : base()
+            public BeforeDateRangeToggleToggleTimeIsAfterNow() : base()
             {
             }
 
-            public DateRangeToggle_ToggleTimeIsAfterNow(IFeatureProvider provider) : base(provider)
+            public BeforeDateRangeToggleToggleTimeIsAfterNow(IFeatureProvider provider) : base(provider)
             {
             }
         }
 
-        class DateRangeToggle_ToggleTimeIsBeforeNow : DateBeforeFeatureToggle
+        class BeforeDateRangeToggleToggleTimeIsNow : BeforeDateFeatureToggle
         {
-            public DateRangeToggle_ToggleTimeIsBeforeNow() : base()
+            public BeforeDateRangeToggleToggleTimeIsNow() : base()
             {
             }
 
-            public DateRangeToggle_ToggleTimeIsBeforeNow(IFeatureProvider provider) : base(provider)
+            public BeforeDateRangeToggleToggleTimeIsNow(IFeatureProvider provider) : base(provider)
             {
             }
         }

@@ -7,14 +7,18 @@ using FeatureFlags.Providers;
 
 namespace FeatureFlags.Toggles
 {
-    public abstract class DateBeforeFeatureToggle : FeatureToggle, IFeatureToggle
+    public abstract class BeforeDateFeatureToggle : FeatureToggle, IFeatureToggle
     {
-        protected  DateBeforeFeatureToggle() : this(new AppSettingsProvider()) { }
-        protected DateBeforeFeatureToggle(IFeatureProvider provider)
+        protected  BeforeDateFeatureToggle() : this(new AppSettingsProvider()) { }
+        protected BeforeDateFeatureToggle(IFeatureProvider provider)
         {
             _provider = provider;
         }
-
+        /// <summary>
+        /// Compares the current date with the toggle.  Returns true if 
+        /// the current datetime is before the specified date.  Useful to
+        /// say a feature is valid until a date.
+        /// </summary>
         public bool Enabled
         {
             get
