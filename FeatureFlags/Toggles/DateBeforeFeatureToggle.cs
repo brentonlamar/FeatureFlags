@@ -7,10 +7,10 @@ using FeatureFlags.Providers;
 
 namespace FeatureFlags.Toggles
 {
-    public abstract class DateBeforeToggle : FeatureToggle, IFeatureToggle
+    public abstract class DateBeforeFeatureToggle : FeatureToggle, IFeatureToggle
     {
-        protected  DateBeforeToggle() : this(new AppSettingsProvider()) { }
-        protected DateBeforeToggle(IFeatureProvider provider)
+        protected  DateBeforeFeatureToggle() : this(new AppSettingsProvider()) { }
+        protected DateBeforeFeatureToggle(IFeatureProvider provider)
         {
             _provider = provider;
         }
@@ -28,7 +28,8 @@ namespace FeatureFlags.Toggles
                 {
                     return now < timeToCompare;
                 }
-                return false;
+                
+                throw new ArgumentException($"Invalid date: {value}");
             }
         }
     }
