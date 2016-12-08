@@ -1,5 +1,5 @@
 # Gets Version from AsseblyInfo.cs updates nuspec's version
-if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == false ]; then
+if [ "$TRAVIS_BRANCH" == $ReleaseFromBranch ] && [ "$TRAVIS_PULL_REQUEST" == false ]; then
 	# Need to make this work => declare $versionNumber = "1.0.${TRAVIS_BUILD_NUMBER}.0"
 	echo "========================================================="
 	echo "Updating nuspec version"

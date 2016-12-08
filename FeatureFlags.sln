@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{A7DD
 		..\Scripts\IncrementVersion.sh = ..\Scripts\IncrementVersion.sh
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsoleApp", "TestConsoleApp\TestConsoleApp.csproj", "{D682ED49-81E5-47C7-924C-F786D31E9BFC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{BD9E27CB-E6D8-490F-9923-EC47356C01B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD9E27CB-E6D8-490F-9923-EC47356C01B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD9E27CB-E6D8-490F-9923-EC47356C01B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D682ED49-81E5-47C7-924C-F786D31E9BFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D682ED49-81E5-47C7-924C-F786D31E9BFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D682ED49-81E5-47C7-924C-F786D31E9BFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D682ED49-81E5-47C7-924C-F786D31E9BFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
