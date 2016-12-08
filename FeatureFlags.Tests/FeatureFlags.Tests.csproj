@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BoolFeatuerToggleTests.cs" />
+    <Compile Include="DateAfterFeatureToggleTests.cs" />
     <Compile Include="DateRangeFeatureToggleTests.cs" />
     <Compile Include="IdListFeatureToggleTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
